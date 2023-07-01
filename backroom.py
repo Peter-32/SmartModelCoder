@@ -19,6 +19,6 @@ def analyze_notebooks_for_readability():
     failure_files_title = "" if len(failure_files) == 0 else """\n\nFailures\n========\n"""
     success_files = "\n".join(success_files)
     failure_files = "\n".join(failure_files)
-    message = f"""\nSuccesses\n==========\n{success_files}{failure_files_title}{failure_files}\n\n{action_needed_message}
+    message = f"""Successes\n==========\n{success_files}{failure_files_title}{failure_files}\n\n{action_needed_message}
     """
     return message
