@@ -132,9 +132,9 @@ def what_to_do_next():
         
 If the code is too slow and less than 10 million rows of data: practice easy leetcode
 
-If the code is too slow and more than 10 million rows of data: Consider working on batches at a time and use Spark.SQL or SparkUDF to speed up 5 lines of code at most.
+If the code is too slow and more than 10 million rows of data: Consider working on batches at a time and use SparkSQL or the pandas SparkUDF to speed up 5 lines of code at most.
 
-See the book at https://peter-32.github.io/.
+See the book at https://peter-32.github.io/ for a list of 45 machine learning steps and more.
 
 """
 
