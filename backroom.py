@@ -130,6 +130,8 @@ def what_to_do_next():
     else:
         return """Decide if the model is overfit or underfit and pursue strategies to remedy one of these.
         
+Consider creating as much as 20 feature engineering notebooks; each one is intended to read from the data from the ETL, transform them, and save the key plus the new features.  All transformations are temporary and there is no concern of mutating the original data since that part isn't overwritten, just new feature CSV files.
+        
 If the code is too slow and less than 10 million rows of data: practice easy leetcode
 
 If the code is too slow and more than 10 million rows of data: Consider working on batches at a time and use SparkSQL or the pandas SparkUDF to speed up 5 lines of code at most.
