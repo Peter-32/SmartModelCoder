@@ -128,7 +128,7 @@ def what_to_do_next():
     if not os.path.exists("3.1_model.ipynb"):
         return "Create an model notebook"
     else:
-        return """Decide if the model is overfit or underfit.
+        return """Decide if the model is overfit or underfit and pursue strategies to remedy one of these.
         
 If the code is too slow and less than 10 million rows of data: practice easy leetcode
 
