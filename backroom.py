@@ -51,13 +51,13 @@ def create_etl_notebook():
 
 
 
-# Save to a CSV file
+# Save to a CSV file usually saved in the cloud.
 
 '''
     return create_notebook(filename='1.1_etl.ipynb', code=code)
 
 def create_split_notebook():
-    code = '''# Read in CSV
+    code = '''# Read in CSV into pandas not spark
 
 
 
@@ -65,7 +65,7 @@ def create_split_notebook():
 
 
 
-# Split the data into train1-5, validation1-5, and test (11 datasets)
+# Split the data into train1-5, validation1-5, and test (11 datasets) usually saved in the cloud.
 
 
 
@@ -82,7 +82,7 @@ def create_feature_engineering_notebook():
     if i == 100:
         return "Files already exist"
     code = '''for cv_split in range(1,6):
-    # Read in the train_{cv_split}, validation_{cv_split}, and test
+    # Read in the train_{cv_split}, validation_{cv_split}, and test into pandas not spark
     
     # Create the new features
     
@@ -91,7 +91,8 @@ def create_feature_engineering_notebook():
     # Select the key column and all new features
     
     # Save to a new CV file called 2.1_feature_engineering_cv_{cv_split}
-    # Append the validation and test set to this same CSV file
+    # Append the validation and test set to this same CSV file usually 
+        # incrementally saved locally, then pushed to the cloud, then deleted locally to save space.
     
 '''
     return create_notebook(filename=filename, code=code)
@@ -99,7 +100,7 @@ def create_feature_engineering_notebook():
 def create_model_notebook():
     code = '''evalution_results = []
 for cv_split in range(1, 6):
-    # Read in the train_{cv_split}, validation_{cv_split}, and test
+    # Read in the train_{cv_split}, validation_{cv_split}, and test into pandas not spark
     
     for feature_df in range(1, 20):
         # Read in the features file for this cv_split
@@ -117,6 +118,25 @@ for cv_split in range(1, 6):
 '''
     return create_notebook(filename='3.1_model.ipynb', code=code)
    
+def what_to_do_next():
+    if not os.path.exists("1.1_etl.ipynb"):
+        return "Create an ETL notebook"
+    if not os.path.exists("1.2_split_data.ipynb"):
+        return "Create an split data notebook"
+    if not os.path.exists("2.01_feature_engineering.ipynb"):
+        return "Create an feature engineering notebook"
+    if not os.path.exists("3.1_model.ipynb"):
+        return "Create an model notebook"
+    else:
+        return """Decide if the model is overfit or underfit.
+        
+If the code is too slow and less than 10 million rows of data: practice easy leetcode
+
+If the code is too slow and more than 10 million rows of data: Consider working on batches at a time and use Spark.SQL or SparkUDF to speed up 5 lines of code at most.
+
+See the book at https://peter-32.github.io/.
+
+"""
 
 
 
